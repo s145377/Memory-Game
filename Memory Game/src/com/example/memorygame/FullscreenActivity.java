@@ -65,7 +65,7 @@ public class FullscreenActivity extends Activity {
                     int mShortAnimTime;
 
                     @Override
-                    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+                    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                     public void onVisibilityChange(boolean visible) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
                             // If the ViewPropertyAnimator API is available
