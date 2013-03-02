@@ -29,7 +29,6 @@ public class FullscreenActivity extends Activity {
 		for(int i = 0; i < 20; i++) {
 			ImageButton cb = new ImageButton(this);
 			cb.setX(i*20);
-			cb.setY(i*20);
 			a.addView(cb);
 		}
 		this.setContentView(v);
