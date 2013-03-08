@@ -15,22 +15,10 @@ import android.widget.EditText;
 import android.widget.CheckBox;
 
 public class FullscreenActivity extends Activity {
-	/** Called when the activity is first created. */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		ScrollView v = new ScrollView(this);
-		AbsoluteLayout a = new AbsoluteLayout(this);
-		v.addView(a);
-		
-		
-		for(int i = 0; i < 20; i++) {
-			ImageButton cb = new ImageButton(this);
-			cb.setX(i*20);
-			a.addView(cb);
-		}
-		this.setContentView(v);
 	}
 }

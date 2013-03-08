@@ -19,15 +19,38 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonBarStyle=0x7f010000;
     }
     public static final class color {
-        public static final int black_overlay=0x7f030000;
+        public static final int black_overlay=0x7f040000;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
+    public static final class id {
+        public static final int button1=0x7f070011;
+        public static final int pattern1x1=0x7f070000;
+        public static final int pattern1x2=0x7f070001;
+        public static final int pattern1x3=0x7f070002;
+        public static final int pattern1x4=0x7f070003;
+        public static final int pattern2x1=0x7f070004;
+        public static final int pattern2x2=0x7f070005;
+        public static final int pattern2x3=0x7f070006;
+        public static final int pattern2x4=0x7f070007;
+        public static final int pattern3x1=0x7f070008;
+        public static final int pattern3x2=0x7f070009;
+        public static final int pattern3x3=0x7f07000a;
+        public static final int pattern3x4=0x7f07000b;
+        public static final int pattern4x1=0x7f07000c;
+        public static final int pattern4x2=0x7f07000d;
+        public static final int pattern4x3=0x7f07000e;
+        public static final int pattern4x4=0x7f07000f;
+        public static final int progressBar=0x7f070010;
+    }
+    public static final class layout {
+        public static final int pattern=0x7f030000;
+    }
     public static final class string {
-        public static final int app_name=0x7f040000;
-        public static final int dummy_button=0x7f040001;
-        public static final int dummy_content=0x7f040002;
+        public static final int app_name=0x7f050000;
+        public static final int dummy_button=0x7f050001;
+        public static final int dummy_content=0x7f050002;
     }
     public static final class style {
         /** 
@@ -51,15 +74,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
-        public static final int ButtonBar=0x7f050003;
-        public static final int ButtonBarButton=0x7f050004;
-        public static final int FullscreenActionBarStyle=0x7f050005;
-        public static final int FullscreenTheme=0x7f050002;
+        public static final int AppTheme=0x7f060001;
+        public static final int ButtonBar=0x7f060003;
+        public static final int ButtonBarButton=0x7f060004;
+        public static final int FullscreenActionBarStyle=0x7f060005;
+        public static final int FullscreenTheme=0x7f060002;
     }
     public static final class styleable {
         /** 
