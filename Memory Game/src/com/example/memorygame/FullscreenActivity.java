@@ -20,6 +20,9 @@ public class FullscreenActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.pattern);
+        
+        Button b = (Button) findViewById(R.id.pattern1x1);
+        b.setBackgroundColor();
 		
 	}
 }
