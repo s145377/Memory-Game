@@ -27,7 +27,7 @@ public class FullscreenActivity extends Activity {
 	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
 	int goal[][] = new int[4][4];
 	int level = 0;
-	int levelTime = 10000; //in milliseconds (10 seconds)
+	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -86,7 +86,7 @@ public class FullscreenActivity extends Activity {
 		info.setText("Level: "+level+" - Game Over! Press to play again");
 
 		level = 0;
-		levelTime = 10000;
+		levelTime = 7000;
 		infoMode = 2;
 	}
 	
