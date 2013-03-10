@@ -2,25 +2,17 @@ package com.example.memorygame;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-<<<<<<< HEAD
-import android.util.EventLog.Event;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AbsoluteLayout;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.LinearLayout;
-=======
-import android.view.View;
-import android.view.View.OnClickListener;
->>>>>>> I made the text readable, I started on adding the menu.
 import android.widget.Button;
+import android.widget.Toast;
 
 public class FullscreenActivity extends Activity {
    
@@ -85,6 +77,7 @@ public class FullscreenActivity extends Activity {
 	}
 	
 	public void gameOver() {
+		//Displays Game Over text.
 		info.setText("Level: "+level+" - Game Over! Press to play again");
 
 		level = 0;
@@ -136,17 +129,15 @@ public class FullscreenActivity extends Activity {
 	public void generateLevel() {
 		infoMode = 0;
 		level++;
-<<<<<<< HEAD
-=======
+		
 		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
->>>>>>> I made the text readable, I started on adding the menu.
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= .92; //decreases time to memorize by 8 percent per level
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
-				
+				//Determines how hard each level will be
 				if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
@@ -202,5 +193,22 @@ public class FullscreenActivity extends Activity {
 		};
 		pause.postDelayed(run, levelTime);
 	}
-	
+	//No Use.
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+    	 
+        switch (item.getItemId())
+        {
+        //Ends Game? Not yet.
+        case R.id.end_game:
+            Toast.makeText(FullscreenActivity.this, "This Button Does Nothing", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(FullscreenActivity.this, FullscreenActivity.class);
+            startActivity(intent);
+            return true;
+ 
+ 
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    } 
 }

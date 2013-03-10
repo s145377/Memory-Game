@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="FullscreenActivity" android:theme="@style/FullscreenTheme"></activity>
+        <activity android:name="com.example.memorygame.about" android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

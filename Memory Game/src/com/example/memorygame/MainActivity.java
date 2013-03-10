@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
  
 public class MainActivity extends Activity {
@@ -40,11 +41,26 @@ public class MainActivity extends Activity {
             Intent intent = new Intent(MainActivity.this, FullscreenActivity.class);
             startActivity(intent);
             return true;
+        case R.id.end_game:
+        	Toast.makeText(MainActivity.this, "This has no purpose", Toast.LENGTH_LONG).show();
  
  
         default:
             return super.onOptionsItemSelected(item);
         }
-    }    
+    }   
+    //The buttons on the home screen
+    //Game Start
+    public void start (View view){
+        Toast.makeText(MainActivity.this, "Game Started", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, FullscreenActivity.class);
+        startActivity(intent);
+    }
+    //About Screen
+    public void about (View view){
+    	Intent intent = new Intent(MainActivity.this, about.class);
+    	startActivity(intent);
+    	
+    }
  
 }
