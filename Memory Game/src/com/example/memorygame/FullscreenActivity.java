@@ -136,20 +136,48 @@ public class FullscreenActivity extends Activity {
 		level++;
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= .92; //decreases time to memorize by 8 percent per level
+
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
-				if(rand>.66) {
-					goal[i][j] = 1; //red
-					b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
+				
+				if(level>=10) {
+					if(rand>.66) {
+						goal[i][j] = 1; //red
+						b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
+					}
+					else if(rand>.33) {
+						goal[i][j]= 0; //white
+						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+					}
+					else {
+						goal[i][j] = 2; //blue
+						b[i][j].setBackgroundColor(Color.parseColor("#000FFF"));
+					}
 				}
-				else if(rand>.33) {
-					goal[i][j]= 0; //white
-					b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+				else if(level>=5) {
+					if(rand>.45) {
+						goal[i][j] = 1; //red
+						b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
+					}
+					else if(rand>.05) {
+						goal[i][j]= 0; //white
+						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+					}
+					else {
+						goal[i][j] = 2; //blue
+						b[i][j].setBackgroundColor(Color.parseColor("#000FFF"));
+					}
 				}
 				else {
-					goal[i][j] = 2; //blue
-					b[i][j].setBackgroundColor(Color.parseColor("#000FFF"));
+					if(rand>.5) {
+						goal[i][j] = 1; //red
+						b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
+					}
+					else {
+						goal[i][j]= 0; //white
+						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+					}
 				}
 			}
 		}
