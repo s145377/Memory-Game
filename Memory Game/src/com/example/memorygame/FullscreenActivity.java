@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+<<<<<<< HEAD
 import android.util.EventLog.Event;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,10 +16,11 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.LinearLayout;
+=======
+import android.view.View;
+import android.view.View.OnClickListener;
+>>>>>>> I made the text readable, I started on adding the menu.
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.EditText;
-import android.widget.CheckBox;
 
 public class FullscreenActivity extends Activity {
    
@@ -134,6 +136,10 @@ public class FullscreenActivity extends Activity {
 	public void generateLevel() {
 		infoMode = 0;
 		level++;
+<<<<<<< HEAD
+=======
+		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
+>>>>>>> I made the text readable, I started on adding the menu.
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= .92; //decreases time to memorize by 8 percent per level
 

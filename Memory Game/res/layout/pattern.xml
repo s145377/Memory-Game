@@ -4,21 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    
-    <!--format for ids of buttons: patternROWxCOLUMN-->
 
+<<<<<<< HEAD
+=======
+    <!-- format for ids of buttons: patternROWxCOLUMN -->
+
+>>>>>>> I made the text readable, I started on adding the menu.
     <Button
         android:id="@+id/pattern1x1"
         android:layout_width="60dp"
         android:layout_height="60dp"
+<<<<<<< HEAD
         android:layout_x="10dp"
         android:layout_y="30dp" 
         android:background="#FFFFFF"/>
+=======
+        android:layout_x="23dp"
+        android:layout_y="32dp"
+        android:background="#FFFFFF" />
+>>>>>>> I made the text readable, I started on adding the menu.
 
     <Button
         android:id="@+id/pattern1x2"
         android:layout_width="60dp"
+<<<<<<< HEAD
         android:layout_height="60dp" 
         android:layout_x="80dp"
         android:layout_y="30dp"
@@ -133,5 +142,131 @@
 	    android:layout_x="20dp"
 	    android:layout_y="320dp"
 	    android:background="#FFFFFF" />
+=======
+        android:layout_height="60dp"
+        android:layout_x="93dp"
+        android:layout_y="32dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern1x3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="163dp"
+        android:layout_y="32dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern1x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="233dp"
+        android:layout_y="32dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern2x1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="23dp"
+        android:layout_y="102dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern2x2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="93dp"
+        android:layout_y="102dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern2x3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="163dp"
+        android:layout_y="102dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern2x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="233dp"
+        android:layout_y="102dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="23dp"
+        android:layout_y="172dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="93dp"
+        android:layout_y="172dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="163dp"
+        android:layout_y="172dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="233dp"
+        android:layout_y="172dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern4x1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="23dp"
+        android:layout_y="242dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern4x2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="93dp"
+        android:layout_y="242dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern4x3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="163dp"
+        android:layout_y="242dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern4x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_x="233dp"
+        android:layout_y="242dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/info"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_x="29dp"
+        android:layout_y="373dp"
+        android:background="#FFFFFF" />
+>>>>>>> I made the text readable, I started on adding the menu.
 
 </AbsoluteLayout>

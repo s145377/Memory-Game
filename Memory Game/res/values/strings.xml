@@ -4,5 +4,7 @@
     <string name="app_name">Memory Game</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="startgame">Start The Game</string>
+    <string name="endgame">End The Game</string>
 
 </resources>
