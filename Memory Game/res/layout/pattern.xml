@@ -125,15 +125,13 @@
         android:layout_y="240dp"
         android:background="#FFFFFF"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_x="20dp"
-        android:layout_y="372dp"
-        android:progress="0" 
-        />
-
+    
+	<Button
+	    android:id="@+id/info"
+	    android:layout_width="260dp"
+	    android:layout_height="60dp"
+	    android:layout_x="20dp"
+	    android:layout_y="320dp"
+	    android:background="#FFFFFF" />
 
 </AbsoluteLayout>

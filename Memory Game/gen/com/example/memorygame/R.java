@@ -25,6 +25,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int info=0x7f070011;
         public static final int pattern=0x7f070000;
         public static final int pattern1x1=0x7f070001;
         public static final int pattern1x2=0x7f070002;
@@ -42,7 +43,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pattern4x2=0x7f07000e;
         public static final int pattern4x3=0x7f07000f;
         public static final int pattern4x4=0x7f070010;
-        public static final int progressBar=0x7f070011;
     }
     public static final class layout {
         public static final int pattern=0x7f030000;

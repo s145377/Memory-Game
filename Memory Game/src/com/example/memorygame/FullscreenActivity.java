@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.LinearLayout;
 import android.widget.Button;
@@ -22,19 +23,23 @@ import android.widget.CheckBox;
 public class FullscreenActivity extends Activity {
    
 	Button[][] b = new Button[4][4]; //, [row] [column]
-	boolean goal[][] = new boolean[4][4];
-	boolean paused = false;
+	Button info;
+	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
+	int goal[][] = new int[4][4];
 	int level = 0;
-	int levelTime = 15000; //in milliseconds (15 seconds)
+	int levelTime = 10000; //in milliseconds (10 seconds)
 	int view = R.layout.pattern;
-
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(view);
-
+        
+        info = new Button(this);
+        info = (Button) findViewById(R.id.info);
+        info.setOnClickListener(infoPress);
+        
         
         b[0][0] = (Button) findViewById(R.id.pattern1x1);
         b[1][0] = (Button) findViewById(R.id.pattern2x1);
@@ -67,56 +72,84 @@ public class FullscreenActivity extends Activity {
 	    	
 	    
 	}
+	
 	public void onPause() {
 		super.onPause();
-		level = 0;
-		levelTime = 15000;
-	}
-	public void onResume() {
-		super.onResume();
-		generateLevel();
+		gameOver();
 	}
 	
+	public void onResume() {
+		super.onResume();
+	}
+	
+	public void gameOver() {
+		info.setText("Level: "+level+" - Game Over! Press to play again");
+
+		level = 0;
+		levelTime = 10000;
+		infoMode = 2;
+	}
+	
+	public OnClickListener infoPress = new OnClickListener() {
+		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+		public void onClick(View v) {
+			if(infoMode==1) {
+				if(check())
+					generateLevel();
+				else
+					gameOver();
+			}
+			else if(infoMode==2)
+				generateLevel();
+		}
+	};
 	public OnClickListener press = new OnClickListener() {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		public void onClick(View v) {
-			if(!paused) {
+			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FFFFFF")) //check if color is white
 					((Button) v).setBackgroundColor(Color.parseColor("#FF0000")); //change color to red
+				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FF0000"))
+					((Button) v).setBackgroundColor(Color.parseColor("#000FFF")); //change color to blue
 				else
 					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF")); //change color to white
+
 			
-				check();
 			}
 		}
 	};
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public void check() {
-		int correct = 0;
+	public boolean check() {
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
-				if((((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#FF0000") && goal[i][j]) || (((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#FFFFFF") && !goal[i][j]))
-					correct++;
+				if(!((((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#FF0000") && goal[i][j]==1) || (((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#FFFFFF") && goal[i][j]==0) || (((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#000FFF") && goal[i][j]==2)))
+						return false;
 			}
 		}
-		if(correct==16)
-			generateLevel();
+		return true;
 	}
+	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void generateLevel() {
-		paused = true;
+		infoMode = 0;
 		level++;
-		levelTime *= .92; //decreases time by 8 percent per level
+		info.setText("Level: "+level+" - Memorize the pattern!");
+		levelTime *= .92; //decreases time to memorize by 8 percent per level
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
-				if(rand>.5) {
-					goal[i][j] = true; //red
+				if(rand>.66) {
+					goal[i][j] = 1; //red
 					b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
 				}
+				else if(rand>.33) {
+					goal[i][j]= 0; //white
+					b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+				}
 				else {
-					goal[i][j]= false; //white
-					b[i][j].setBackgroundColor(Color.parseColor("#FF00FF"));
+					goal[i][j] = 2; //blue
+					b[i][j].setBackgroundColor(Color.parseColor("#000FFF"));
 				}
 			}
 		}
@@ -124,15 +157,16 @@ public class FullscreenActivity extends Activity {
 		Handler pause = new Handler();
 		Runnable run = new Runnable() {
 			public void run() {
-				paused = false;
+				infoMode = 1;
 				for(int i = 0; i < 4; i++) {
 					for(int j = 0; j < 4; j++) {
 						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF")); //set all buttons to white
 					}
 				}
-				
+		        info.setText("Level: "+level+" - Repeat the Pattern \n Press to go to next level");
 			}
 		};
 		pause.postDelayed(run, levelTime);
 	}
+	
 }
