@@ -8,5 +8,7 @@
     <string name="endgame">End The Game</string>
     <string name="about">About</string>
     <string name="swarm">Swarm</string>
+    <string name="skip">Skip</string>
+    <string name="textview">TextView</string>
 
 </resources>

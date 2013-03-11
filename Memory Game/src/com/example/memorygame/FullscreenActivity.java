@@ -2,6 +2,7 @@ package com.example.memorygame;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -20,24 +21,27 @@ public class FullscreenActivity extends Activity {
 
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	Button info;
+	Button skip;
 	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
 	int goal[][] = new int[4][4];
 	int level = 0;
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
-	int lives = 5;
+	int lives = 3;
 	boolean reset = false;
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//Ensures that there will be no title, and it will be fullscreen.
+		//Ensures that there will be no title, fullscreen, and landscape.
 	    requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-	    
+	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(view);
-        
+        skip = new Button(this);
+        skip = (Button) findViewById(R.id.skip);
+        skip.setOnClickListener(skipPress);
         info = new Button(this);
         info = (Button) findViewById(R.id.info);
         info.setOnClickListener(infoPress);
@@ -107,22 +111,24 @@ public class FullscreenActivity extends Activity {
 				beginGame();
 		}
 	};
+	//Start Game Button
 	public OnClickListener press = new OnClickListener() {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-		public void onClick(View v) {
+			public void onClick(View v) {
 			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FFFFFF")) //check if color is white
 					((Button) v).setBackgroundColor(Color.parseColor("#FF0000")); //change color to red
 				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FF0000"))
 					((Button) v).setBackgroundColor(Color.parseColor("#000FFF")); //change color to blue
 				else
-					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF")); //change color to white
-
-			
-			}
-			else if(infoMode==0) {
-				beginGame();
-			}
+					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF"));} //change color to white
+		}
+	};
+	//Skip Button
+	public OnClickListener skipPress = new OnClickListener() {
+		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+		public void onClick(View v) {
+			beginGame();
 		}
 	};
 	
@@ -136,6 +142,7 @@ public class FullscreenActivity extends Activity {
 		}
 		return true;
 	}
+
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void generateLevel() {
