@@ -21,7 +21,7 @@ public class FullscreenActivity extends Activity {
 	int level = 0;
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
-	int lives; 
+	int lives = 5; 
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
@@ -86,6 +86,7 @@ public class FullscreenActivity extends Activity {
 		level = 0;
 		levelTime = 7000;
 		infoMode = 2;
+		lives = 5;
 	}
 	
 	public OnClickListener infoPress = new OnClickListener() {
@@ -95,7 +96,7 @@ public class FullscreenActivity extends Activity {
 				if(check())
 					generateLevel();
 				else
-					gameOver();
+					lives();
 			}
 			else if(infoMode==2)
 				generateLevel();
@@ -195,5 +196,14 @@ public class FullscreenActivity extends Activity {
 			}
 		};
 		pause.postDelayed(run, levelTime);
+	}
+	public void lives() {
+		if(lives>=0) {
+			lives--;
+			level--;
+			generateLevel();
+		}
+		else
+			gameOver();
 	}
 } 
