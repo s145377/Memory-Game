@@ -12,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-
+//http://bit.ly/W0MeNP
 public class FullscreenActivity extends Activity {
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	Button info;
