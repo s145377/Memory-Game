@@ -1,5 +1,6 @@
 package com.example.memorygame;
  
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,15 +8,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-import com.swarmconnect.Swarm;
-import com.swarmconnect.SwarmActivity;
  
-public class MainActivity extends SwarmActivity {
+public class MainActivity extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Swarm.init(this, 4761, "ffb27e79e8be8fff7593f3f0da8704a6");
     }
  
     // Initiating Menu XML file (menu.xml)
@@ -43,9 +41,6 @@ public class MainActivity extends SwarmActivity {
             Intent intent = new Intent(MainActivity.this, FullscreenActivity.class);
             startActivity(intent);
             return true;
-        case R.id.swarm:
-        	Swarm.showDashboard();
-        	return true;
         case R.id.end_game:
         	Toast.makeText(MainActivity.this, "`This has no purpose", Toast.LENGTH_LONG).show();
  

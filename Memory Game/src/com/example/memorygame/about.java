@@ -1,10 +1,10 @@
 package com.example.memorygame;
 
+import android.app.Activity;
 import android.os.Bundle;
 
-import com.swarmconnect.SwarmActivity;
 
-public class about extends SwarmActivity{
+public class about extends Activity{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
