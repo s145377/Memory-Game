@@ -12,9 +12,15 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.Toast;
 //http://bit.ly/W0MeNP
+=======
+>>>>>>> added way to make game quicker
 public class FullscreenActivity extends Activity {
+
+	//link to this app on github: http://bit.ly/W0MeNP
+
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	Button info;
 	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
@@ -22,7 +28,13 @@ public class FullscreenActivity extends Activity {
 	int level = 0;
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
+<<<<<<< HEAD
 	int lives = 5; 
+=======
+	int lives = 5;
+	boolean reset = false;
+	
+>>>>>>> added way to make game quicker
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -100,6 +112,8 @@ public class FullscreenActivity extends Activity {
 			}
 			else if(infoMode==2)
 				generateLevel();
+			else if(infoMode==0)
+				beginGame();
 		}
 	};
 	public OnClickListener press = new OnClickListener() {
@@ -114,6 +128,9 @@ public class FullscreenActivity extends Activity {
 					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF")); //change color to white
 
 			
+			}
+			else if(infoMode==0) {
+				beginGame();
 			}
 		}
 	};
@@ -131,6 +148,7 @@ public class FullscreenActivity extends Activity {
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void generateLevel() {
+		reset = false;
 		infoMode = 0;
 		level++;
 		
@@ -186,18 +204,27 @@ public class FullscreenActivity extends Activity {
 		Handler pause = new Handler();
 		Runnable run = new Runnable() {
 			public void run() {
-				infoMode = 1;
-				for(int i = 0; i < 4; i++) {
-					for(int j = 0; j < 4; j++) {
-						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF")); //set all buttons to white
-					}
-				}
-		        info.setText("Level: "+level+" - Repeat the Pattern \n Press to go to next level");
+				beginGame();
 			}
 		};
 		pause.postDelayed(run, levelTime);
 	}
+<<<<<<< HEAD
 	//Loses a life
+=======
+	public void beginGame() {
+		if(!reset) {
+			infoMode = 1;
+			for(int i = 0; i < 4; i++) {
+				for(int j = 0; j < 4; j++) {
+					b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF")); //set all buttons to white
+				}
+			}
+	        info.setText("Level: "+level+" - Repeat the Pattern \n Press to go to next level");
+	        reset = true;
+		}
+	}
+>>>>>>> added way to make game quicker
 	public void lives() {
 		if(lives>=0) {
 			lives--;
