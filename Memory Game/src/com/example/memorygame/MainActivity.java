@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
             startActivity(intent);
             return true;
         case R.id.end_game:
-        	Toast.makeText(MainActivity.this, "This has no purpose", Toast.LENGTH_LONG).show();
+        	Toast.makeText(MainActivity.this, "`This has no purpose", Toast.LENGTH_LONG).show();
  
  
         default:
