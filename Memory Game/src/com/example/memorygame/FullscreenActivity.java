@@ -21,6 +21,7 @@ public class FullscreenActivity extends Activity {
 	int level = 0;
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
+	int lives; 
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
@@ -134,7 +135,7 @@ public class FullscreenActivity extends Activity {
 		
 		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
 		info.setText("Level: "+level+" - Memorize the pattern!");
-		levelTime *= .92; //decreases time to memorize by 8 percent per level
+		levelTime *= .95; //decreases time to memorize by 5 percent per level
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
@@ -195,5 +196,4 @@ public class FullscreenActivity extends Activity {
 		};
 		pause.postDelayed(run, levelTime);
 	}
-	//No Use.
-    } 
+} 
