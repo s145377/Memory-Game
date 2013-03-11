@@ -135,7 +135,7 @@ public class FullscreenActivity extends Activity {
 		infoMode = 0;
 		level++;
 		info.setText("Level: "+level+" - Memorize the pattern!");
-		levelTime *= .92; //decreases time to memorize by 8 percent per level
+		levelTime *= .95; //decreases time to memorize by 5 percent per level
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
