@@ -21,6 +21,7 @@ public class FullscreenActivity extends Activity {
 	int level = 0;
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
+	int lives; 
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
@@ -194,7 +195,6 @@ public class FullscreenActivity extends Activity {
 			}
 		};
 		pause.postDelayed(run, levelTime);
-	}
-	
+	}	
 	//No Use.
-    } 
+    }  
