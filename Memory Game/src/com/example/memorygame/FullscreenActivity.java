@@ -35,25 +35,25 @@ public class FullscreenActivity extends Activity {
         info.setOnClickListener(infoPress);
         
         
-        b[0][0] = (Button) findViewById(R.id.pattern1x1);
-        b[1][0] = (Button) findViewById(R.id.pattern2x1);
+        b[0][0] = (Button) findViewById(R.id.pattern1x4);
+        b[1][0] = (Button) findViewById(R.id.pattern2x4);
         b[2][0] = (Button) findViewById(R.id.pattern3x1);
-        b[3][0] = (Button) findViewById(R.id.pattern4x1);
+        b[3][0] = (Button) findViewById(R.id.pattern4x4);
 
         b[0][1] = (Button) findViewById(R.id.pattern1x2);
-        b[1][1] = (Button) findViewById(R.id.pattern2x2);
+        b[1][1] = (Button) findViewById(R.id.pattern2x3);
         b[2][1] = (Button) findViewById(R.id.pattern3x2);
-        b[3][1] = (Button) findViewById(R.id.pattern4x2);
+        b[3][1] = (Button) findViewById(R.id.pattern4x3);
 
         b[0][2] = (Button) findViewById(R.id.pattern1x3);
-        b[1][2] = (Button) findViewById(R.id.pattern2x3);
+        b[1][2] = (Button) findViewById(R.id.pattern2x2);
         b[2][2] = (Button) findViewById(R.id.pattern3x3);
-        b[3][2] = (Button) findViewById(R.id.pattern4x3);
+        b[3][2] = (Button) findViewById(R.id.pattern4x2);
 
-        b[0][3] = (Button) findViewById(R.id.pattern1x4);
-        b[1][3] = (Button) findViewById(R.id.pattern2x4);
+        b[0][3] = (Button) findViewById(R.id.pattern1x1);
+        b[1][3] = (Button) findViewById(R.id.pattern2x1);
         b[2][3] = (Button) findViewById(R.id.pattern3x4);
-        b[3][3] = (Button) findViewById(R.id.pattern4x4);
+        b[3][3] = (Button) findViewById(R.id.pattern4x1);
         
         for(int i = 0; i < 4; i++) {
         	for(int j = 0; j < 4; j++) {
