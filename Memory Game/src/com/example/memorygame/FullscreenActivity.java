@@ -12,11 +12,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-<<<<<<< HEAD
-=======
 import android.widget.Toast;
->>>>>>> Toast
 //http://bit.ly/W0MeNP
+//#UselessComments
 public class FullscreenActivity extends Activity {
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	Button info;
@@ -26,10 +24,7 @@ public class FullscreenActivity extends Activity {
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
 	int lives = 5; 
-<<<<<<< HEAD
-	
-=======
->>>>>>> Toast
+
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -140,7 +135,7 @@ public class FullscreenActivity extends Activity {
 	public void generateLevel() {
 		infoMode = 0;
 		level++;
-		
+        Toast.makeText(FullscreenActivity.this, "Good Job!", Toast.LENGTH_SHORT).show();
 		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= .95; //decreases time to memorize by 5 percent per level
@@ -209,18 +204,12 @@ public class FullscreenActivity extends Activity {
     }  
 =======
 	}
-<<<<<<< HEAD
-=======
 	//Loses a life
->>>>>>> Toast
 	public void lives() {
 		if(lives>=0) {
 			lives--;
 			level--;
-<<<<<<< HEAD
-=======
 	        Toast.makeText(FullscreenActivity.this, "You lost a life! You have "+lives+" lives left!", Toast.LENGTH_SHORT).show();
->>>>>>> Toast
 			generateLevel();
 		}
 		else
