@@ -1,7 +1,6 @@
 package com.example.memorygame;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -12,7 +11,11 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-public class FullscreenActivity extends Activity {
+import android.widget.Toast;
+import com.swarmconnect.SwarmActivity;
+import com.swarmconnect.SwarmLeaderboard;
+public class FullscreenActivity extends SwarmActivity {
+
 
 	//link to this app on github: http://bit.ly/W0MeNP
 
@@ -68,7 +71,6 @@ public class FullscreenActivity extends Activity {
         }
 	
 		generateLevel();
-
 	    	
 	    
 	}
@@ -85,7 +87,7 @@ public class FullscreenActivity extends Activity {
 	public void gameOver() {
 		//Displays Game Over text.
 		info.setText("Level: "+level+" - Game Over! Press to play again");
-
+		SwarmLeaderboard.submitScoreAndShowLeaderboard(6977, level);
 		level = 0;
 		levelTime = 7000;
 		infoMode = 2;
@@ -213,7 +215,8 @@ public class FullscreenActivity extends Activity {
 		}
 	}
 	public void lives() {
-		if(lives>=0) {
+		if(lives>0) {
+	        Toast.makeText(FullscreenActivity.this, "Ouch! You have "+lives+" lives left!", Toast.LENGTH_SHORT).show();
 			lives--;
 			level--;
 			generateLevel();
