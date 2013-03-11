@@ -2,23 +2,17 @@ package com.example.memorygame;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.EventLog.Event;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AbsoluteLayout;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.LinearLayout;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.EditText;
-import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class FullscreenActivity extends Activity {
    
@@ -41,25 +35,25 @@ public class FullscreenActivity extends Activity {
         info.setOnClickListener(infoPress);
         
         
-        b[0][0] = (Button) findViewById(R.id.pattern1x1);
-        b[1][0] = (Button) findViewById(R.id.pattern2x1);
+        b[0][0] = (Button) findViewById(R.id.pattern1x4);
+        b[1][0] = (Button) findViewById(R.id.pattern2x4);
         b[2][0] = (Button) findViewById(R.id.pattern3x1);
-        b[3][0] = (Button) findViewById(R.id.pattern4x1);
+        b[3][0] = (Button) findViewById(R.id.pattern4x4);
 
         b[0][1] = (Button) findViewById(R.id.pattern1x2);
-        b[1][1] = (Button) findViewById(R.id.pattern2x2);
+        b[1][1] = (Button) findViewById(R.id.pattern2x3);
         b[2][1] = (Button) findViewById(R.id.pattern3x2);
-        b[3][1] = (Button) findViewById(R.id.pattern4x2);
+        b[3][1] = (Button) findViewById(R.id.pattern4x3);
 
         b[0][2] = (Button) findViewById(R.id.pattern1x3);
-        b[1][2] = (Button) findViewById(R.id.pattern2x3);
+        b[1][2] = (Button) findViewById(R.id.pattern2x2);
         b[2][2] = (Button) findViewById(R.id.pattern3x3);
-        b[3][2] = (Button) findViewById(R.id.pattern4x3);
+        b[3][2] = (Button) findViewById(R.id.pattern4x2);
 
-        b[0][3] = (Button) findViewById(R.id.pattern1x4);
-        b[1][3] = (Button) findViewById(R.id.pattern2x4);
+        b[0][3] = (Button) findViewById(R.id.pattern1x1);
+        b[1][3] = (Button) findViewById(R.id.pattern2x1);
         b[2][3] = (Button) findViewById(R.id.pattern3x4);
-        b[3][3] = (Button) findViewById(R.id.pattern4x4);
+        b[3][3] = (Button) findViewById(R.id.pattern4x1);
         
         for(int i = 0; i < 4; i++) {
         	for(int j = 0; j < 4; j++) {
@@ -83,6 +77,7 @@ public class FullscreenActivity extends Activity {
 	}
 	
 	public void gameOver() {
+		//Displays Game Over text.
 		info.setText("Level: "+level+" - Game Over! Press to play again");
 
 		level = 0;
@@ -134,13 +129,15 @@ public class FullscreenActivity extends Activity {
 	public void generateLevel() {
 		infoMode = 0;
 		level++;
+		
+		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= .95; //decreases time to memorize by 5 percent per level
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
-				
+				//Determines how hard each level will be
 				if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
@@ -197,4 +194,22 @@ public class FullscreenActivity extends Activity {
 		pause.postDelayed(run, levelTime);
 	}
 	
+	//No Use.
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+    	 
+        switch (item.getItemId())
+        {
+        //Ends Game? Not yet.
+        case R.id.end_game:
+            Toast.makeText(FullscreenActivity.this, "This Button Does Nothing", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(FullscreenActivity.this, FullscreenActivity.class);
+            startActivity(intent);
+            return true;
+ 
+ 
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    } 
 }

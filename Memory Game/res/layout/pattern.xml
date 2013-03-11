@@ -1,124 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pattern"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
-    
-    
-    <!--format for ids of buttons: patternROWxCOLUMN-->
 
     <Button
         android:id="@+id/pattern1x1"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_x="10dp"
-        android:layout_y="30dp" 
-        android:background="#FFFFFF"/>
+        android:layout_alignLeft="@+id/info"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern1x3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/pattern1x2"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern1x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/pattern1x3"
+        android:background="#FFFFFF" />
 
     <Button
         android:id="@+id/pattern1x2"
         android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="80dp"
-        android:layout_y="30dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern1x3"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="150dp"
-        android:layout_y="30dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern1x4"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="220dp"
-        android:layout_y="30dp"
-        android:background="#FFFFFF"/>
-    
-    <Button
-        android:id="@+id/pattern2x1"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="10dp"
-        android:layout_y="100dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern2x2"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="80dp"
-        android:layout_y="100dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern2x3"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="150dp"
-        android:layout_y="100dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern2x4"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="220dp"
-        android:layout_y="100dp"
-        android:background="#FFFFFF"/>
-    
-    <Button
-        android:id="@+id/pattern3x1"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="10dp"
-        android:layout_y="170dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern3x2"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="80dp"
-        android:layout_y="170dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern3x3"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="150dp"
-        android:layout_y="170dp"
-        android:background="#FFFFFF"/>
-    <Button
-        android:id="@+id/pattern3x4"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="220dp"
-        android:layout_y="170dp"
-        android:background="#FFFFFF"/>
-    
-    <Button
-        android:id="@+id/pattern4x1"
-        android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="10dp"
-        android:layout_y="240dp"
-        android:background="#FFFFFF"/>
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/pattern1x1"
+        android:background="#FFFFFF" />
+
     <Button
         android:id="@+id/pattern4x2"
         android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="80dp"
-        android:layout_y="240dp"
-        android:background="#FFFFFF"/>
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/pattern4x1"
+        android:layout_toLeftOf="@+id/pattern1x3"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/info"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern2x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignRight="@+id/info"
+        android:layout_below="@+id/pattern1x4"
+        android:layout_marginTop="13dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern4x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/pattern3x4"
+        android:layout_below="@+id/pattern3x4"
+        android:layout_marginTop="12dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/pattern2x4"
+        android:layout_below="@+id/pattern2x4"
+        android:layout_marginTop="13dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern2x3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/pattern3x4"
+        android:layout_alignLeft="@+id/pattern1x3"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/pattern3x4"
+        android:layout_alignBottom="@+id/pattern3x4"
+        android:layout_toLeftOf="@+id/pattern1x4"
+        android:background="#FFFFFF" />
+
     <Button
         android:id="@+id/pattern4x3"
         android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="150dp"
-        android:layout_y="240dp"
-        android:background="#FFFFFF"/>
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/pattern4x4"
+        android:layout_alignBottom="@+id/pattern4x4"
+        android:layout_toLeftOf="@+id/pattern1x4"
+        android:background="#FFFFFF" />
+
     <Button
-        android:id="@+id/pattern4x4"
+        android:id="@+id/pattern2x2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/pattern2x3"
+        android:layout_alignBottom="@+id/pattern2x3"
+        android:layout_alignLeft="@+id/pattern1x2"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/pattern4x4"
+        android:layout_toLeftOf="@+id/pattern1x3"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern2x1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/pattern3x4"
+        android:layout_toLeftOf="@+id/pattern1x2"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern3x1"
         android:layout_width="60dp"
         android:layout_height="60dp" 
         android:layout_x="220dp"
@@ -134,5 +152,13 @@
 	    android:layout_y="320dp"
 	    android:background="#FFFFFF" />
 
+    <Button
+        android:id="@+id/pattern4x1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/pattern4x3"
+        android:layout_alignBottom="@+id/pattern4x3"
+        android:layout_toLeftOf="@+id/pattern1x2"
+        android:background="#FFFFFF" />
 
-</AbsoluteLayout>
+</RelativeLayout>
