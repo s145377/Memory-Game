@@ -27,12 +27,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class id {
         public static final int button1=0x7f070001;
         public static final int end_game=0x7f070002;
-        public static final int info=0x7f070005;
+        public static final int info=0x7f07000a;
         public static final int pattern=0x7f070003;
-        public static final int pattern1x1=0x7f070004;
-        public static final int pattern1x2=0x7f070007;
-        public static final int pattern1x3=0x7f070006;
-        public static final int pattern1x4=0x7f070008;
+        public static final int pattern1x1=0x7f070007;
+        public static final int pattern1x2=0x7f070005;
+        public static final int pattern1x3=0x7f070004;
+        public static final int pattern1x4=0x7f070006;
         public static final int pattern2x1=0x7f070013;
         public static final int pattern2x2=0x7f070011;
         public static final int pattern2x3=0x7f07000e;
@@ -41,8 +41,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pattern3x2=0x7f070012;
         public static final int pattern3x3=0x7f07000f;
         public static final int pattern3x4=0x7f07000d;
-        public static final int pattern4x1=0x7f07000a;
-        public static final int pattern4x2=0x7f070009;
+        public static final int pattern4x1=0x7f070009;
+        public static final int pattern4x2=0x7f070008;
         public static final int pattern4x3=0x7f070010;
         public static final int pattern4x4=0x7f07000c;
         public static final int start_game=0x7f070000;

@@ -2,20 +2,18 @@ package com.example.memorygame;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class FullscreenActivity extends Activity {
-   
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	Button info;
 	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
@@ -28,6 +26,10 @@ public class FullscreenActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//Ensures that there will be no title, and it will be fullscreen.
+	    requestWindowFeature(Window.FEATURE_NO_TITLE);
+	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	    
         setContentView(view);
         
         info = new Button(this);
@@ -195,21 +197,4 @@ public class FullscreenActivity extends Activity {
 	}
 	
 	//No Use.
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-    	 
-        switch (item.getItemId())
-        {
-        //Ends Game? Not yet.
-        case R.id.end_game:
-            Toast.makeText(FullscreenActivity.this, "This Button Does Nothing", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(FullscreenActivity.this, FullscreenActivity.class);
-            startActivity(intent);
-            return true;
- 
- 
-        default:
-            return super.onOptionsItemSelected(item);
-        }
     } 
-}

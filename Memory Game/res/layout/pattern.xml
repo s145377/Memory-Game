@@ -6,14 +6,6 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/pattern1x1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/info"
-        android:layout_alignParentTop="true"
-        android:background="#FFFFFF" />
-
-    <Button
         android:id="@+id/pattern1x3"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -138,19 +130,11 @@
     <Button
         android:id="@+id/pattern3x1"
         android:layout_width="60dp"
-        android:layout_height="60dp" 
-        android:layout_x="220dp"
-        android:layout_y="240dp"
-        android:background="#FFFFFF"/>
-
-    
-	<Button
-	    android:id="@+id/info"
-	    android:layout_width="260dp"
-	    android:layout_height="60dp"
-	    android:layout_x="20dp"
-	    android:layout_y="320dp"
-	    android:background="#FFFFFF" />
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/pattern3x2"
+        android:layout_alignBottom="@+id/pattern3x2"
+        android:layout_toLeftOf="@+id/pattern1x2"
+        android:background="#FFFFFF" />
 
     <Button
         android:id="@+id/pattern4x1"
@@ -159,6 +143,14 @@
         android:layout_alignBaseline="@+id/pattern4x3"
         android:layout_alignBottom="@+id/pattern4x3"
         android:layout_toLeftOf="@+id/pattern1x2"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/pattern1x1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/pattern2x4"
+        android:layout_alignLeft="@+id/info"
         android:background="#FFFFFF" />
 
 </RelativeLayout>
