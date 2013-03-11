@@ -12,10 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-<<<<<<< HEAD
-=======
 import android.widget.Toast;
->>>>>>> Toast
 //http://bit.ly/W0MeNP
 public class FullscreenActivity extends Activity {
 	Button[][] b = new Button[4][4]; //, [row] [column]
@@ -26,10 +23,6 @@ public class FullscreenActivity extends Activity {
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
 	int lives = 5; 
-<<<<<<< HEAD
-	
-=======
->>>>>>> Toast
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -204,18 +197,12 @@ public class FullscreenActivity extends Activity {
 		};
 		pause.postDelayed(run, levelTime);
 	}
-<<<<<<< HEAD
-=======
 	//Loses a life
->>>>>>> Toast
 	public void lives() {
 		if(lives>=0) {
 			lives--;
 			level--;
-<<<<<<< HEAD
-=======
 	        Toast.makeText(FullscreenActivity.this, "You lost a life! You have "+lives+" lives left!", Toast.LENGTH_SHORT).show();
->>>>>>> Toast
 			generateLevel();
 		}
 		else
