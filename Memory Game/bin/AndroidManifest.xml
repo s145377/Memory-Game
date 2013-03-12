@@ -1,30 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.memorygame"
-    android:versionCode="1"
-    android:versionName="1.0" >
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.example.memorygame">
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17"/>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar">
-        <activity
-            android:name="com.example.memorygame.MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@style/FullscreenTheme" >
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:configChanges="orientation|keyboardHidden|screenSize" android:name="com.example.memorygame.MainActivity" android:theme="@style/FullscreenTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="FullscreenActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
-        <activity android:name="com.example.memorygame.about" android:theme="@android:style/Theme.NoTitleBar"></activity>
+        <activity android:name="com.example.memorygame.FullscreenActivity" android:theme="@style/FullscreenTheme"/>
+        <activity android:name="com.example.memorygame.about" android:theme="@style/FullscreenTheme"/>
+        <activity android:configChanges="orientation|keyboardHidden" android:label="Swarm" android:name="com.swarmconnect.SwarmMainActivity" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="stateHidden"/>
+        
+        <service android:name="com.swarmconnect.NotificationService" android:process=":swarm"/>
     </application>
+    
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
+	<!-- Required if using the Swarm Store features. Not required otherwise. -->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
 </manifest>
