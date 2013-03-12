@@ -40,8 +40,6 @@ public class FullscreenActivity extends Activity {
 	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(view);
         skip = new Button(this);
-        skip = (Button) findViewById(R.id.skip);
-        skip.setOnClickListener(skipPress);
         info = new Button(this);
         info = (Button) findViewById(R.id.info);
         info.setOnClickListener(infoPress);
@@ -124,13 +122,7 @@ public class FullscreenActivity extends Activity {
 					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF"));} //change color to white
 		}
 	};
-	//Skip Button
-	public OnClickListener skipPress = new OnClickListener() {
-		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-		public void onClick(View v) {
-			beginGame();
-		}
-	};
+
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public boolean check() {
