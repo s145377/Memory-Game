@@ -1,5 +1,7 @@
 package com.example.memorygame;
 
+import java.util.zip.Inflater;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -20,15 +22,15 @@ public class FullscreenActivity extends Activity {
 	//link to this app on github: http://bit.ly/W0MeNP
 
 	Button[][] b = new Button[4][4]; //, [row] [column]
-	Button info;
-	Button skip;
-	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
 	int goal[][] = new int[4][4];
+	Button info;
+	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
 	int level = 0;
 	int levelTime = 7000; //in milliseconds (7 seconds)
 	int view = R.layout.pattern;
 	int lives = 3;
 	boolean reset = false;
+	
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
@@ -39,7 +41,6 @@ public class FullscreenActivity extends Activity {
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(view);
-        skip = new Button(this);
         info = new Button(this);
         info = (Button) findViewById(R.id.info);
         info.setOnClickListener(infoPress);
@@ -112,29 +113,41 @@ public class FullscreenActivity extends Activity {
 	//Start Game Button
 	public OnClickListener press = new OnClickListener() {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-			public void onClick(View v) {
+		public void onClick(View v) {
 			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FFFFFF")) //check if color is white
 					((Button) v).setBackgroundColor(Color.parseColor("#FF0000")); //change color to red
 				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FF0000"))
 					((Button) v).setBackgroundColor(Color.parseColor("#000FFF")); //change color to blue
 				else
-					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF"));} //change color to white
+					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF")); //change color to white
+			}
+			else if(infoMode==0)
+				beginGame();
 		}
 	};
 
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	public boolean checkTile(int row, int column) {
+
+		if(((((ColorDrawable)((b[row][column]).getBackground())).getColor() == Color.parseColor("#FF0000") && goal[row][column]==1) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == Color.parseColor("#FFFFFF") && goal[row][column]==0) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == Color.parseColor("#000FFF") && goal[row][column]==2)))
+			return true;
+		else
+			return false;
+	}
+	
 	public boolean check() {
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
-				if(!((((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#FF0000") && goal[i][j]==1) || (((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#FFFFFF") && goal[i][j]==0) || (((ColorDrawable)((b[i][j]).getBackground())).getColor() == Color.parseColor("#000FFF") && goal[i][j]==2)))
-						return false;
+				if(!checkTile(i, j)) {
+					return false;
+				}
+					
 			}
 		}
 		return true;
 	}
-
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void generateLevel() {
