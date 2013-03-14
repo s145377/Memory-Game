@@ -3,7 +3,6 @@ package com.example.memorygame;
 import java.util.zip.Inflater;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,7 +15,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
-public class FullscreenActivity extends Activity {
+
+import com.swarmconnect.SwarmActivity;
+import com.swarmconnect.SwarmLeaderboard;
+public class FullscreenActivity extends SwarmActivity {
 
 
 	//link to this app on github: http://bit.ly/W0MeNP
@@ -87,12 +89,13 @@ public class FullscreenActivity extends Activity {
 	}
 	
 	public void gameOver() {
+		SwarmLeaderboard.submitScoreAndShowLeaderboard(6977, level);
 		//Displays Game Over text.
 		info.setText("Level: "+level+" - Game Over! Press to play again");
 		level = 0;
 		levelTime = 7000;
 		infoMode = 2;
-		lives = 5;
+		lives = 3;
 	}
 	
 	public OnClickListener infoPress = new OnClickListener() {
