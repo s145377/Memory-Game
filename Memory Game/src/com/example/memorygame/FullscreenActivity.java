@@ -5,6 +5,7 @@ import java.util.zip.Inflater;
 import android.annotation.TargetApi;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,7 +23,6 @@ public class FullscreenActivity extends SwarmActivity {
 
 
 	//link to this app on github: http://bit.ly/W0MeNP
-
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	int goal[][] = new int[4][4];
 	Button info;
@@ -32,6 +32,7 @@ public class FullscreenActivity extends SwarmActivity {
 	int view = R.layout.pattern;
 	int lives = 3;
 	boolean reset = false;
+
 	
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -109,8 +110,6 @@ public class FullscreenActivity extends SwarmActivity {
 			}
 			else if(infoMode==2)
 				generateLevel();
-			else if(infoMode==0)
-				beginGame();
 		}
 	};
 	//Start Game Button
@@ -154,10 +153,11 @@ public class FullscreenActivity extends SwarmActivity {
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void generateLevel() {
+		Typeface bit=Typeface.createFromAsset(getAssets(),"fonts/bus.ttf");
 		reset = false;
 		infoMode = 0;
 		level++;
-		
+		info.setTypeface(bit);
 		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= .95; //decreases time to memorize by 5 percent per level
@@ -223,7 +223,7 @@ public class FullscreenActivity extends SwarmActivity {
 					b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF")); //set all buttons to white
 				}
 			}
-	        info.setText("Level: "+level+" - Repeat the Pattern \n Press to go to next level");
+	        info.setText("Level: "+level+" - Press for Next Level");
 	        reset = true;
 		}
 	}
