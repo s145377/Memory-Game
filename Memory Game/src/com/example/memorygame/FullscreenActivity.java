@@ -1,7 +1,5 @@
 package com.example.memorygame;
 
-import java.util.zip.Inflater;
-
 import android.annotation.TargetApi;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -21,16 +19,22 @@ import com.swarmconnect.SwarmActivity;
 import com.swarmconnect.SwarmLeaderboard;
 public class FullscreenActivity extends SwarmActivity {
 
-
+	public final double LEVEL_TIME_DECREASE = .95;
+	public final int RED = Color.parseColor("#FF0000");
+	public final int WHITE = Color.parseColor("#FFFFFF");
+	public final int BLUE = Color.parseColor("#000FFF");
+	public final int START_LEVEL_TIME = 7000;
+	public final int START_LIVES = 3;
+	
 	//link to this app on github: http://bit.ly/W0MeNP
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	int goal[][] = new int[4][4];
 	Button info;
 	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
 	int level = 0;
-	int levelTime = 7000; //in milliseconds (7 seconds)
+	int levelTime = START_LEVEL_TIME;
 	int view = R.layout.pattern;
-	int lives = 3;
+	int lives = START_LIVES;
 	boolean reset = false;
 
 	
@@ -94,9 +98,9 @@ public class FullscreenActivity extends SwarmActivity {
 		//Displays Game Over text.
 		info.setText("Level: "+level+" - Game Over! Press to play again");
 		level = 0;
-		levelTime = 7000;
+		levelTime = START_LEVEL_TIME;
 		infoMode = 2;
-		lives = 3;
+		lives = START_LIVES;
 	}
 	
 	public OnClickListener infoPress = new OnClickListener() {
@@ -118,11 +122,11 @@ public class FullscreenActivity extends SwarmActivity {
 		public void onClick(View v) {
 			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FFFFFF")) //check if color is white
-					((Button) v).setBackgroundColor(Color.parseColor("#FF0000")); //change color to red
+					((Button) v).setBackgroundColor(RED); //change color to red
 				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FF0000"))
-					((Button) v).setBackgroundColor(Color.parseColor("#000FFF")); //change color to blue
+					((Button) v).setBackgroundColor(BLUE); //change color to blue
 				else
-					((Button) v).setBackgroundColor(Color.parseColor("#FFFFFF")); //change color to white
+					((Button) v).setBackgroundColor(WHITE); //change color to white
 			}
 			else if(infoMode==0)
 				beginGame();
@@ -160,7 +164,7 @@ public class FullscreenActivity extends SwarmActivity {
 		info.setTypeface(bit);
 		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
 		info.setText("Level: "+level+" - Memorize the pattern!");
-		levelTime *= .95; //decreases time to memorize by 5 percent per level
+		levelTime *= LEVEL_TIME_DECREASE;
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
@@ -169,39 +173,39 @@ public class FullscreenActivity extends SwarmActivity {
 				if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
+						b[i][j].setBackgroundColor(RED);
 					}
 					else if(rand>.33) {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+						b[i][j].setBackgroundColor(WHITE);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						b[i][j].setBackgroundColor(Color.parseColor("#000FFF"));
+						b[i][j].setBackgroundColor(BLUE);
 					}
 				}
 				else if(level>=5) {
 					if(rand>.45) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
+						b[i][j].setBackgroundColor(RED);
 					}
 					else if(rand>.05) {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+						b[i][j].setBackgroundColor(BLUE);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						b[i][j].setBackgroundColor(Color.parseColor("#000FFF"));
+						b[i][j].setBackgroundColor(WHITE);
 					}
 				}
 				else {
 					if(rand>.5) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(Color.parseColor("#FF0000"));
+						b[i][j].setBackgroundColor(RED);
 					}
 					else {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"));
+						b[i][j].setBackgroundColor(WHITE);
 					}
 				}
 			}
@@ -220,7 +224,7 @@ public class FullscreenActivity extends SwarmActivity {
 			infoMode = 1;
 			for(int i = 0; i < 4; i++) {
 				for(int j = 0; j < 4; j++) {
-					b[i][j].setBackgroundColor(Color.parseColor("#FFFFFF")); //set all buttons to white
+					b[i][j].setBackgroundColor(WHITE); //set all buttons to white
 				}
 			}
 	        info.setText("Level: "+level+" - Press for Next Level");
