@@ -21,8 +21,7 @@ public class MainActivity extends SwarmActivity {
  
     // Initiating Menu XML file (menu.xml)
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.layout.menu, menu);
         return true;
@@ -33,27 +32,27 @@ public class MainActivity extends SwarmActivity {
      * Identify single menu item by it's id
      * */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
- 
-        switch (item.getItemId())
-        {
-        //Starts game
-        case R.id.start_game:
-            Toast.makeText(MainActivity.this, "Game Started", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, FullscreenActivity.class);
-            startActivity(intent);
-            return true;
-        case R.id.end_game:
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	int id = item.getItemId();
+    	if(id == R.id.start_game) {
+    		 Toast.makeText(MainActivity.this, "Game Started", Toast.LENGTH_SHORT).show();
+             Intent intent = new Intent(MainActivity.this, FullscreenActivity.class);
+             startActivity(intent);
+             return true;
+    	}
+    	else if(id == R.id.end_game) {
         	Toast.makeText(MainActivity.this, "`This has no purpose", Toast.LENGTH_LONG).show();
-        case R.id.swarm:
+
+    	}
+    	else if(id == R.id.swarm) {
         	Swarm.showDashboard();
         	return true;
- 
- 
-        default:
+    	}
+    	else {
             return super.onOptionsItemSelected(item);
-        }
+    	}
+    	
+    	return false; //never should happen, just put this here to avoid compilation error
     }   
     //The buttons on the home screen
     //Game Start
