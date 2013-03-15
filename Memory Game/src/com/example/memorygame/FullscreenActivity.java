@@ -121,9 +121,9 @@ public class FullscreenActivity extends SwarmActivity {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		public void onClick(View v) {
 			if(infoMode==1) {
-				if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FFFFFF")) //check if color is white
+				if(((ColorDrawable)((Button) v).getBackground()).getColor()==WHITE) //check if color is white
 					((Button) v).setBackgroundColor(RED); //change color to red
-				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==Color.parseColor("#FF0000"))
+				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==RED)
 					((Button) v).setBackgroundColor(BLUE); //change color to blue
 				else
 					((Button) v).setBackgroundColor(WHITE); //change color to white
@@ -137,7 +137,7 @@ public class FullscreenActivity extends SwarmActivity {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public boolean checkTile(int row, int column) {
 
-		if(((((ColorDrawable)((b[row][column]).getBackground())).getColor() == Color.parseColor("#FF0000") && goal[row][column]==1) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == Color.parseColor("#FFFFFF") && goal[row][column]==0) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == Color.parseColor("#000FFF") && goal[row][column]==2)))
+		if(((((ColorDrawable)((b[row][column]).getBackground())).getColor() == RED && goal[row][column]==1) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == WHITE && goal[row][column]==0) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == BLUE && goal[row][column]==2)))
 			return true;
 		else
 			return false;
