@@ -191,11 +191,11 @@ public class FullscreenActivity extends SwarmActivity {
 					}
 					else if(rand>.05) {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(BLUE);
+						b[i][j].setBackgroundColor(WHITE);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						b[i][j].setBackgroundColor(WHITE);
+						b[i][j].setBackgroundColor(BLUE);
 					}
 				}
 				else {
