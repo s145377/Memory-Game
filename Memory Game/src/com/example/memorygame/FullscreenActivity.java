@@ -162,7 +162,6 @@ public class FullscreenActivity extends SwarmActivity {
 		infoMode = 0;
 		level++;
 		info.setTypeface(bit);
-		info.setTextColor(Color.GREEN);//sets the color of the text to Green.
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= LEVEL_TIME_DECREASE;
 

@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:background="#FFFFFF"
-        android:textColor="#FF0000"/>
+        android:textColor="@color/black_overlay" />
 
     <Button
         android:id="@+id/pattern2x4"
