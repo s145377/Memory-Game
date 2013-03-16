@@ -38,7 +38,6 @@ public class FullscreenActivity extends SwarmActivity {
 	boolean reset = false;
 
 	
-	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
