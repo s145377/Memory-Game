@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="18dp"
         android:layout_toRightOf="@+id/pattern1x2"
-        android:background="#FFFFFF" />
+        android:background="#000000" />
 
     <Button
         android:id="@+id/info"
