@@ -1,11 +1,16 @@
 package com.example.memorygame;
  
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.swarmconnect.Swarm;
@@ -13,12 +18,22 @@ import com.swarmconnect.SwarmActivity;
 public class MainActivity extends SwarmActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
+		Button start,about;
         super.onCreate(savedInstanceState);
+	    requestWindowFeature(Window.FEATURE_NO_TITLE);
+	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.main);
         Swarm.init(this, 4761, "ffb27e79e8be8fff7593f3f0da8704a6");
+        start = new Button(this);
+        start = (Button) findViewById(R.id.start_game);
+        about = new Button(this);
+        about = (Button) findViewById(R.id.about);
+		Typeface bit=Typeface.createFromAsset(getAssets(),"fonts/bus.ttf");
+		about.setTypeface(bit);
+		start.setTypeface(bit);
 
-    }
- 
+    } 
     // Initiating Menu XML file (menu.xml)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,10 +55,6 @@ public class MainActivity extends SwarmActivity {
              startActivity(intent);
              return true;
     	}
-    	else if(id == R.id.end_game) {
-        	Toast.makeText(MainActivity.this, "`This has no purpose", Toast.LENGTH_LONG).show();
-
-    	}
     	else if(id == R.id.swarm) {
         	Swarm.showDashboard();
         	return true;
@@ -51,8 +62,6 @@ public class MainActivity extends SwarmActivity {
     	else {
             return super.onOptionsItemSelected(item);
     	}
-    	
-    	return false; //never should happen, just put this here to avoid compilation error
     }   
     //The buttons on the home screen
     //Game Start

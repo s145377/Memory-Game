@@ -12,7 +12,7 @@
         android:onClick="start" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/about"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_gravity="bottom"
