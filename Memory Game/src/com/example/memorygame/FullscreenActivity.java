@@ -127,15 +127,15 @@ public class FullscreenActivity extends SwarmActivity {
 				else
 					((Button) v).setBackgroundColor(WHITE); //change color to white
 			}
-			else if(infoMode==0)
-				beginGame();
+			//else if(infoMode==0)
+				//beginGame();
 		}
 	};
 
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public boolean checkTile(int row, int column) {
-
+		//checks the tile, sees if pattern is correct. 
 		if(((((ColorDrawable)((b[row][column]).getBackground())).getColor() == RED && goal[row][column]==1) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == WHITE && goal[row][column]==0) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == BLUE && goal[row][column]==2)))
 			return true;
 		else
