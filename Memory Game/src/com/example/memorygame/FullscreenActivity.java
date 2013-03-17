@@ -18,7 +18,9 @@ import android.widget.Toast;
 import com.swarmconnect.SwarmActivity;
 import com.swarmconnect.SwarmLeaderboard;
 public class FullscreenActivity extends SwarmActivity {
+	//link to this app on github: http://bit.ly/W0MeNP
 
+	//These are the constants
 	public final double LEVEL_TIME_DECREASE = .95;
 	public final int RED = Color.parseColor("#FF0000");
 	public final int WHITE = Color.parseColor("#FFFFFF");
@@ -26,7 +28,6 @@ public class FullscreenActivity extends SwarmActivity {
 	public final int START_LEVEL_TIME = 7000;
 	public final int START_LIVES = 3;
 	
-	//link to this app on github: http://bit.ly/W0MeNP
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	int goal[][] = new int[4][4];
 	Button info;
