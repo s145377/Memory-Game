@@ -12,6 +12,6 @@
     <string name="textview">TextView</string>
     <string name="abouttext">How to play this game:</string>
     <string name="howtext">Look at the pattern, memorize the pattern, and then repeat the pattern. One tap will turn the block red, two taps will turn it blue, and three taps will turn it white again. Press the button with the text on the bottom when you think you have the pattern correctly. You have three lives.</string>
-    <string name="developedby">App created and developed by Head Programmer Alden Hallak and Head Programmer Jacob Noel. </string>
+    <string name="developedby"></string>
 
 </resources>
