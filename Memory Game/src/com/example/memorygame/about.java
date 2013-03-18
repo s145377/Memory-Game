@@ -21,6 +21,7 @@ public class about extends SwarmActivity{
         String programmer1 = "";
         String programmer2 = "";
         int p = (int) (Math.random()*100);
+        //Randomizes who is `credited first as programmers.
         if(p>50) {
         	programmer1 = "Jacob Noel";
         	programmer2 = "Alden Hallak";
