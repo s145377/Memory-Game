@@ -122,11 +122,11 @@ public class FullscreenActivity extends SwarmActivity {
 		public void onClick(View v) {
 			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==WHITE) //check if color is white
-					((Button) v).setBackgroundColor(RED); //change color to red
+					setTile(RED, ((Button) v)); //change color to red
 				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==RED)
-					((Button) v).setBackgroundColor(BLUE); //change color to blue
+					setTile(BLUE, ((Button) v)); //change color to blue
 				else
-					((Button) v).setBackgroundColor(WHITE); //change color to white
+					setTile(WHITE, ((Button) v)); //change color to white
 			}
 			//else if(infoMode==0)
 				//beginGame();
@@ -172,39 +172,39 @@ public class FullscreenActivity extends SwarmActivity {
 				if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(RED);
+						setTile(RED, b[i][j]);
 					}
 					else if(rand>.33) {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(WHITE);
+						setTile(WHITE, b[i][j]);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						b[i][j].setBackgroundColor(BLUE);
+						setTile(BLUE, b[i][j]);
 					}
 				}
 				else if(level>=5) {
 					if(rand>.45) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(RED);
+						setTile(RED, b[i][j]);
 					}
 					else if(rand>.05) {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(WHITE);
+						setTile(WHITE, b[i][j]);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						b[i][j].setBackgroundColor(BLUE);
+						setTile(BLUE, b[i][j]);
 					}
 				}
 				else {
 					if(rand>.5) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(RED);
+						setTile(RED, b[i][j]);
 					}
 					else {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(WHITE);
+						setTile(WHITE, b[i][j]);
 					}
 				}
 			}
@@ -223,7 +223,7 @@ public class FullscreenActivity extends SwarmActivity {
 			infoMode = 1;
 			for(int i = 0; i < 4; i++) {
 				for(int j = 0; j < 4; j++) {
-					b[i][j].setBackgroundColor(WHITE); //set all buttons to white
+					setTile(WHITE, b[i][j]); //set all buttons to white
 				}
 			}
 	        info.setText("Level: "+level+" - Press for Next Level");
@@ -239,5 +239,16 @@ public class FullscreenActivity extends SwarmActivity {
 		}
 		else
 			gameOver();
+	}
+	public void setTile(int c, Button b) {
+		b.setBackgroundColor(c);
+		b.setText("1");
+		
+		if(c==RED)
+			b.setText("2");
+		else if(c==WHITE)
+			b.setText("1");
+		else if(c==BLUE)
+			b.setText("3");
 	}
 } 
