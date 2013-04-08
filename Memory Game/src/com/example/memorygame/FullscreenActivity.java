@@ -22,9 +22,15 @@ public class FullscreenActivity extends SwarmActivity {
 
 	//These are the constants
 	public final double LEVEL_TIME_DECREASE = .95;
-	public final int RED = Color.parseColor("#FF0000");
-	public final int WHITE = Color.parseColor("#FFFFFF");
-	public final int BLUE = Color.parseColor("#000FFF");
+	public final int RED = Color.RED;
+	public final int WHITE = Color.WHITE;
+	public final int BLUE = Color.BLUE;
+	public final int PURPLE = Color.MAGENTA;
+	public final int GREEN = Color.GREEN;
+	public final int YELLOW = Color.YELLOW;
+	public final int ORANGE = Color.parseColor("#FD8700");
+	public final int LIGHT_BLUE = Color.parseColor("#00C3FD");
+	public final int PINK = Color.parseColor("#F9ABE5");
 	public final int START_LEVEL_TIME = 7000;
 	public final int START_LIVES = 3;
 	
@@ -169,7 +175,13 @@ public class FullscreenActivity extends SwarmActivity {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
 				//Determines how hard each level will be
-				if(level>=10) {
+				if(level>=20) {
+					
+				}
+				else if(level>=15) {
+					
+				}
+				else if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
 						setTile(RED, b[i][j]);
@@ -243,7 +255,8 @@ public class FullscreenActivity extends SwarmActivity {
 	public void setTile(int c, Button b) {
 		b.setBackgroundColor(c);
 		b.setText("1");
-		
+		int textColor = Color.rgb(255-Color.red(c), 255-Color.green(c), 255-Color.blue(c));
+		b.setTextColor(textColor);
 		if(c==RED)
 			b.setText("2");
 		else if(c==WHITE)
