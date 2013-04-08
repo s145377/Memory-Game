@@ -34,7 +34,7 @@ public class about extends SwarmActivity{
         	programmer1 = "a monkey";
         	programmer2 = "another monkey";
         }
-        developedby.setText("App envisioned by Jacob Noel and developed by "+programmer1+" and "+programmer2);
+        developedby.setText("App envisioned and developed by "+programmer1+" and "+programmer2);
 		Typeface bit=Typeface.createFromAsset(getAssets(),"fonts/bus.ttf");
 		developedby.setTypeface(bit);
 		TextView about = (TextView) findViewById(R.id.textbody);

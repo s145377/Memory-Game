@@ -17,14 +17,20 @@ import android.widget.Toast;
 
 import com.swarmconnect.SwarmActivity;
 import com.swarmconnect.SwarmLeaderboard;
-public class FullscreenActivity extends SwarmActivity {
+public class onlynumbers extends SwarmActivity {
 	//link to this app on github: http://bit.ly/W0MeNP
 
 	//These are the constants
 	public final double LEVEL_TIME_DECREASE = .95;
-	public final int RED = Color.parseColor("#FF0000");
-	public final int WHITE = Color.parseColor("#FFFFFF");
-	public final int BLUE = Color.parseColor("#000FFF");
+	public final int RED = Color.RED;
+	public final int WHITE = Color.WHITE;
+	public final int BLUE = Color.BLUE;
+	public final int PURPLE = Color.MAGENTA;
+	public final int GREEN = Color.GREEN;
+	public final int YELLOW = Color.YELLOW;
+	public final int ORANGE = Color.parseColor("#FD8700");
+	public final int LIGHT_BLUE = Color.parseColor("#00C3FD");
+	public final int PINK = Color.parseColor("#F9ABE5");
 	public final int START_LEVEL_TIME = 7000;
 	public final int START_LIVES = 3;
 	
@@ -122,11 +128,11 @@ public class FullscreenActivity extends SwarmActivity {
 		public void onClick(View v) {
 			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==WHITE) //check if color is white
-					((Button) v).setBackgroundColor(RED); //change color to red
+					setTile(RED, ((Button) v)); //change color to red
 				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==RED)
-					((Button) v).setBackgroundColor(BLUE); //change color to blue
+					setTile(BLUE, ((Button) v)); //change color to blue
 				else
-					((Button) v).setBackgroundColor(WHITE); //change color to white
+					setTile(WHITE, ((Button) v)); //change color to white
 			}
 			//else if(infoMode==0)
 				//beginGame();
@@ -169,42 +175,48 @@ public class FullscreenActivity extends SwarmActivity {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
 				//Determines how hard each level will be
-				if(level>=10) {
+				if(level>=20) {
+					
+				}
+				else if(level>=15) {
+					
+				}
+				else if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(RED);
+						setTile(RED, b[i][j]);
 					}
 					else if(rand>.33) {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(WHITE);
+						setTile(WHITE, b[i][j]);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						b[i][j].setBackgroundColor(BLUE);
+						setTile(BLUE, b[i][j]);
 					}
 				}
 				else if(level>=5) {
 					if(rand>.45) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(RED);
+						setTile(RED, b[i][j]);
 					}
 					else if(rand>.05) {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(WHITE);
+						setTile(WHITE, b[i][j]);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						b[i][j].setBackgroundColor(BLUE);
+						setTile(BLUE, b[i][j]);
 					}
 				}
 				else {
 					if(rand>.5) {
 						goal[i][j] = 1; //red
-						b[i][j].setBackgroundColor(RED);
+						setTile(RED, b[i][j]);
 					}
 					else {
 						goal[i][j]= 0; //white
-						b[i][j].setBackgroundColor(WHITE);
+						setTile(WHITE, b[i][j]);
 					}
 				}
 			}
@@ -223,7 +235,7 @@ public class FullscreenActivity extends SwarmActivity {
 			infoMode = 1;
 			for(int i = 0; i < 4; i++) {
 				for(int j = 0; j < 4; j++) {
-					b[i][j].setBackgroundColor(WHITE); //set all buttons to white
+					setTile(WHITE, b[i][j]); //set all buttons to white
 				}
 			}
 	        info.setText("Level: "+level+" - Press for Next Level");
@@ -232,12 +244,23 @@ public class FullscreenActivity extends SwarmActivity {
 	}
 	public void lives() {
 		if(lives>0) {
-	        Toast.makeText(FullscreenActivity.this, "Ouch! You have "+lives+" lives left!", Toast.LENGTH_SHORT).show();
+	        Toast.makeText(onlynumbers.this, "Ouch! You have "+lives+" lives left!", Toast.LENGTH_SHORT).show();
 			lives--;
 			level--;
 			generateLevel();
 		}
 		else
 			gameOver();
+	}
+	public void setTile(int c, Button b) {
+		b.setText("1");
+		int textColor = Color.rgb(255-Color.red(c), 255-Color.green(c), 255-Color.blue(c));
+		b.setTextColor(textColor);
+		if(c==RED)
+			b.setText("2"); 
+		else if(c==WHITE)
+			b.setText("1");
+		else if(c==BLUE)
+			b.setText("3");
 	}
 } 

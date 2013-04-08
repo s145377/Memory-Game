@@ -18,7 +18,7 @@ import com.swarmconnect.SwarmActivity;
 public class MainActivity extends SwarmActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-		Button start,about;
+		Button start,about,startnumbcolor,startnumb;
         super.onCreate(savedInstanceState);
 	    requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -29,10 +29,15 @@ public class MainActivity extends SwarmActivity {
         start = (Button) findViewById(R.id.start_game);
         about = new Button(this);
         about = (Button) findViewById(R.id.about);
+		startnumbcolor = new Button(this);
+		start = (Button) findViewById(R.id.start_game_numbers_colors);
+		startnumb = new Button(this);
+		startnumb = (Button) findViewById(R.id.start_game_numbers);
 		Typeface bit=Typeface.createFromAsset(getAssets(),"fonts/bus.ttf");
 		about.setTypeface(bit);
 		start.setTypeface(bit);
-
+		startnumbcolor.setTypeface(bit);
+		startnumb.setTypeface(bit);
     } 
     // Initiating Menu XML file (menu.xml)
     @Override
@@ -75,6 +80,14 @@ public class MainActivity extends SwarmActivity {
     	Intent intent = new Intent(MainActivity.this, about.class);
     	startActivity(intent);
     	
+    }
+    public void startnumbcolor (View view){
+    	Intent intent = new Intent(MainActivity.this, FullScreenActivityWithNumbers.class);
+    	startActivity(intent);
+    }
+    public void startnumb (View view){
+    	Intent intent = new Intent(MainActivity.this, onlynumbers.class);
+    	startActivity(intent);
     }
  
 }
