@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -127,12 +126,12 @@ public class onlynumbers extends SwarmActivity {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		public void onClick(View v) {
 			if(infoMode==1) {
-				if(((ColorDrawable)((Button) v).getBackground()).getColor()==WHITE) //check if color is white
-					setTile(RED, ((Button) v)); //change color to red
-				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==RED)
-					setTile(BLUE, ((Button) v)); //change color to blue
+				if((((Button) v).getText().toString()) == "1") //check if color is white
+					setTile(1, ((Button) v)); //change color to red
+				else if((((Button) v).getText().toString())=="2")
+					setTile(2, ((Button) v)); //change color to blue
 				else
-					setTile(WHITE, ((Button) v)); //change color to white
+					setTile(0, ((Button) v)); //change color to white
 			}
 			//else if(infoMode==0)
 				//beginGame();
@@ -143,7 +142,7 @@ public class onlynumbers extends SwarmActivity {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public boolean checkTile(int row, int column) {
 		//checks the tile, sees if pattern is correct. 
-		if(((((ColorDrawable)((b[row][column]).getBackground())).getColor() == RED && goal[row][column]==1) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == WHITE && goal[row][column]==0) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == BLUE && goal[row][column]==2)))
+		if(((((b[row][column]).getText().toString())) == "1" && goal[row][column]==1) || ((((b[row][column]).getText().toString())) == "0" && goal[row][column]==0) || ((((b[row][column]).getText().toString())) == "2" && goal[row][column]==2))
 			return true;
 		else
 			return false;
@@ -184,39 +183,39 @@ public class onlynumbers extends SwarmActivity {
 				else if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
-						setTile(RED, b[i][j]);
+						setTile(1, b[i][j]);
 					}
 					else if(rand>.33) {
 						goal[i][j]= 0; //white
-						setTile(WHITE, b[i][j]);
+						setTile(0, b[i][j]);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						setTile(BLUE, b[i][j]);
+						setTile(2, b[i][j]);
 					}
 				}
 				else if(level>=5) {
 					if(rand>.45) {
 						goal[i][j] = 1; //red
-						setTile(RED, b[i][j]);
+						setTile(1, b[i][j]);
 					}
 					else if(rand>.05) {
 						goal[i][j]= 0; //white
-						setTile(WHITE, b[i][j]);
+						setTile(0, b[i][j]);
 					}
 					else {
 						goal[i][j] = 2; //blue
-						setTile(BLUE, b[i][j]);
+						setTile(2, b[i][j]);
 					}
 				}
 				else {
 					if(rand>.5) {
 						goal[i][j] = 1; //red
-						setTile(RED, b[i][j]);
+						setTile(1, b[i][j]);
 					}
 					else {
 						goal[i][j]= 0; //white
-						setTile(WHITE, b[i][j]);
+						setTile(0, b[i][j]);
 					}
 				}
 			}
@@ -235,7 +234,7 @@ public class onlynumbers extends SwarmActivity {
 			infoMode = 1;
 			for(int i = 0; i < 4; i++) {
 				for(int j = 0; j < 4; j++) {
-					setTile(WHITE, b[i][j]); //set all buttons to white
+					setTile(0, b[i][j]); //set all buttons to white
 				}
 			}
 	        info.setText("Level: "+level+" - Press for Next Level");
@@ -253,14 +252,13 @@ public class onlynumbers extends SwarmActivity {
 			gameOver();
 	}
 	public void setTile(int c, Button b) {
-		b.setText("1");
-		int textColor = Color.rgb(255-Color.red(c), 255-Color.green(c), 255-Color.blue(c));
-		b.setTextColor(textColor);
-		if(c==RED)
-			b.setText("2"); 
-		else if(c==WHITE)
+
+		b.setTextColor(Color.BLACK);
+		if(c==1)
 			b.setText("1");
-		else if(c==BLUE)
-			b.setText("3");
+		else if(c==0)
+			b.setText("0");
+		else if(c==3)
+			b.setText("2");
 	}
 } 
