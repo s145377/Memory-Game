@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.swarmconnect.SwarmActivity;
 import com.swarmconnect.SwarmLeaderboard;
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class FullscreenActivity extends SwarmActivity {
 	//link to this app on github: http://bit.ly/W0MeNP
 
@@ -118,7 +119,6 @@ public class FullscreenActivity extends SwarmActivity {
 	};
 	//Start Game Button
 	public OnClickListener press = new OnClickListener() {
-		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		public void onClick(View v) {
 			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==WHITE) //check if color is white

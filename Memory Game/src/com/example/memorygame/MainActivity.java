@@ -32,7 +32,7 @@ public class MainActivity extends SwarmActivity {
 		startnumbcolor = new Button(this);
 		start = (Button) findViewById(R.id.start_game_numbers_colors);
 		startnumb = new Button(this);
-		startnumb = (Button) findViewById(R.id.start_game_numbers);
+		startnumb = (Button) findViewById(R.id.start_game_numbers);		
 		Typeface bit=Typeface.createFromAsset(getAssets(),"fonts/bus.ttf");
 		about.setTypeface(bit);
 		start.setTypeface(bit);
