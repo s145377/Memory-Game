@@ -13,7 +13,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.swarmconnect.SwarmActivity;
 import com.swarmconnect.SwarmLeaderboard;
 public class onlynumbers extends SwarmActivity {
@@ -126,9 +125,9 @@ public class onlynumbers extends SwarmActivity {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		public void onClick(View v) {
 			if(infoMode==1) {
-				if((((Button) v).getText().toString()) == "1") //check if color is white
+				if((((Button) v).getText().toString()) == "0") //check if color is white
 					setTile(1, ((Button) v)); //change color to red
-				else if((((Button) v).getText().toString())=="2")
+				else if((((Button) v).getText().toString()) == "1") //check if color is red
 					setTile(2, ((Button) v)); //change color to blue
 				else
 					setTile(0, ((Button) v)); //change color to white
@@ -258,7 +257,7 @@ public class onlynumbers extends SwarmActivity {
 			b.setText("1");
 		else if(c==0)
 			b.setText("0");
-		else if(c==3)
+		else if(c==2)
 			b.setText("2");
 	}
 } 
