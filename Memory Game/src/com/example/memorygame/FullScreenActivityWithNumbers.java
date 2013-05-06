@@ -179,7 +179,18 @@ public class FullScreenActivityWithNumbers extends SwarmActivity {
 					
 				}
 				else if(level>=15) {
-					
+					if(rand>.66) {
+						goal[i][j] = 1; //red
+						setTile(RED, b[i][j]);
+					}
+					else if(rand>.33) {
+						goal[i][j]= 0; //white
+						setTile(WHITE, b[i][j]);
+					}
+					else {
+						goal[i][j] = 2; //blue
+						setTile(BLUE, b[i][j]);
+					}
 				}
 				else if(level>=10) {
 					if(rand>.66) {

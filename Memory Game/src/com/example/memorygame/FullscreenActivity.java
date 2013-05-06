@@ -26,6 +26,7 @@ public class FullscreenActivity extends SwarmActivity {
 	public final int RED = Color.parseColor("#FF0000");
 	public final int WHITE = Color.parseColor("#FFFFFF");
 	public final int BLUE = Color.parseColor("#000FFF");
+	public final int GREEN = Color.parseColor("#00FF00");
 	public final int START_LEVEL_TIME = 7000;
 	public final int START_LIVES = 3;
 	
@@ -39,6 +40,7 @@ public class FullscreenActivity extends SwarmActivity {
 	int lives = START_LIVES;
 	boolean reset = false;
 
+	
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
@@ -125,6 +127,8 @@ public class FullscreenActivity extends SwarmActivity {
 					((Button) v).setBackgroundColor(RED); //change color to red
 				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==RED)
 					((Button) v).setBackgroundColor(BLUE); //change color to blue
+				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==BLUE)
+					((Button) v).setBackgroundColor(GREEN); //change color to green
 				else
 					((Button) v).setBackgroundColor(WHITE); //change color to white
 			}
@@ -137,7 +141,7 @@ public class FullscreenActivity extends SwarmActivity {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public boolean checkTile(int row, int column) {
 		//checks the tile, sees if pattern is correct. 
-		if(((((ColorDrawable)((b[row][column]).getBackground())).getColor() == RED && goal[row][column]==1) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == WHITE && goal[row][column]==0) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == BLUE && goal[row][column]==2)))
+		if(((((ColorDrawable)((b[row][column]).getBackground())).getColor() == RED && goal[row][column]==1) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == WHITE && goal[row][column]==0) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == BLUE && goal[row][column]==2) || (((ColorDrawable)((b[row][column]).getBackground())).getColor() == GREEN && goal[row][column]==3)))
 			return true;
 		else
 			return false;
@@ -164,12 +168,34 @@ public class FullscreenActivity extends SwarmActivity {
 		info.setTypeface(bit);
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= LEVEL_TIME_DECREASE;
+		if (level%5 == 0 && level <=15){
+			levelTime = START_LEVEL_TIME;
+		}
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
 				//Determines how hard each level will be
-				if(level>=10) {
+				if(level>=15){
+					if (rand>.66){ 
+						goal[i][j] = 2;
+						b[i][j].setBackgroundColor(BLUE);
+					}
+					else if(rand>.33) {
+						goal[i][j] = 1;
+						b[i][j].setBackgroundColor(RED);
+					}
+					else if(rand>.20) {
+						goal[i][j]= 0; //white
+						b[i][j].setBackgroundColor(WHITE);
+					}
+					else {
+						goal[i][j] = 0;
+						b[i][j].setBackgroundColor(GREEN);
+					}
+						
+				}
+				else if(level>=10) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
 						b[i][j].setBackgroundColor(RED);
@@ -190,6 +216,7 @@ public class FullscreenActivity extends SwarmActivity {
 					}
 					else if(rand>.05) {
 						goal[i][j]= 0; //white
+						
 						b[i][j].setBackgroundColor(WHITE);
 					}
 					else {
