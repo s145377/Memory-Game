@@ -23,6 +23,7 @@ public class FullscreenActivity extends SwarmActivity {
 	//link to this app on github: http://bit.ly/W0MeNP
 
 	//These are the constants
+<<<<<<< HEAD
 	private final double LEVEL_TIME_DECREASE = .95;
 	private final int RED = Color.parseColor("#FF0000");
 	private final int WHITE = Color.parseColor("#FFFFFF");
@@ -35,6 +36,16 @@ public class FullscreenActivity extends SwarmActivity {
 	//Sound Variables
 	//private SoundPool wrong = new SoundPool(1,AudioManager.STREAM_MUSIC,0);
 	//private int sWrong = sounds.load(context, R.assets.boop);
+=======
+	public final double LEVEL_TIME_DECREASE = .95;
+	public final int RED = Color.parseColor("#FF0000");
+	public final int WHITE = Color.parseColor("#FFFFFF");
+	public final int BLUE = Color.parseColor("#000FFF");
+	public final int GREEN = Color.parseColor("#00FF00");
+	public final int START_LEVEL_TIME = 7000;
+	public final int START_LIVES = 3;
+	public final double DIFFICULTY = .1;
+>>>>>>> Added difficulty
 	
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	Button liveButton;
@@ -104,7 +115,7 @@ public class FullscreenActivity extends SwarmActivity {
 	}
 	
 	public void gameOver() {
-		SwarmLeaderboard.submitScoreAndShowLeaderboard(6977, level);
+		SwarmLeaderboard.submitScoreAndShowLeaderboard(6977, (float)(level*10*DIFFICULTY));
 		//Displays Game Over text.
 		info.setText("Level: "+level+" - Game Over! Press to play again");
 		level = 0;
@@ -174,7 +185,7 @@ public class FullscreenActivity extends SwarmActivity {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
 				//Determines how hard each level will be
-				if(level>=15){
+				if(level>=15/DIFFICULTY){
 					if (rand>.66){ 
 						goal[i][j] = 2;
 						b[i][j].setBackgroundColor(BLUE);
@@ -193,7 +204,7 @@ public class FullscreenActivity extends SwarmActivity {
 					}
 						
 				}
-				else if(level>=10) {
+				else if(level>=10/DIFFICULTY) {
 					if(rand>.66) {
 						goal[i][j] = 1; //red
 						b[i][j].setBackgroundColor(RED);
@@ -207,7 +218,7 @@ public class FullscreenActivity extends SwarmActivity {
 						b[i][j].setBackgroundColor(BLUE);
 					}
 				}
-				else if(level>=5) {
+				else if(level>=5/DIFFICULTY) {
 					if(rand>.45) {
 						goal[i][j] = 1; //red
 						b[i][j].setBackgroundColor(RED);
