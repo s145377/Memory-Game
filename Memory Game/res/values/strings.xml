@@ -4,7 +4,7 @@
     <string name="app_name">Memory Game</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="startgame">Start The Game With Colors</string>
+    <string name="startgame">Start The Game</string>
     <string name="endgame">End The Game</string>
     <string name="about">About</string>
     <string name="swarm">Swarm</string>
@@ -15,5 +15,6 @@
     <string name="developedby"></string>
     <string name="startgamewithnumbers">Start The Game With Numbers and Colors</string>
     <string name="startgameonlynumbers">Start The Game With only Numbers</string>
+    <string name="highscore">the highest score is</string>
 
 </resources>

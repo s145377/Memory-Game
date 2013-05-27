@@ -7,22 +7,9 @@
     <Button
         android:id="@+id/start_game"
         android:layout_width="match_parent"
-        android:layout_height="111dp"
+        android:layout_height="311dp"
         android:onClick="start"
         android:text="@string/startgame" />
-
-    <Button
-        android:id="@+id/start_game_numbers_colors"
-        android:layout_width="match_parent"
-        android:layout_height="111dp"
-        android:onClick="startnumbcolor"
-        android:text="@string/startgamewithnumbers" />
-    <Button
-        android:id="@+id/start_game_numbers"
-        android:layout_width="match_parent"
-        android:layout_height="111dp"
-        android:onClick="startnumb"
-        android:text="@string/startgameonlynumbers" />
 
     <Button
         android:id="@+id/about"

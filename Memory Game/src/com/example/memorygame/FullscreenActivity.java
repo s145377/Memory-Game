@@ -5,6 +5,8 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+//import android.media.AudioManager;
+//import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,7 +15,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.swarmconnect.SwarmActivity;
 import com.swarmconnect.SwarmLeaderboard;
@@ -22,15 +23,21 @@ public class FullscreenActivity extends SwarmActivity {
 	//link to this app on github: http://bit.ly/W0MeNP
 
 	//These are the constants
-	public final double LEVEL_TIME_DECREASE = .95;
-	public final int RED = Color.parseColor("#FF0000");
-	public final int WHITE = Color.parseColor("#FFFFFF");
-	public final int BLUE = Color.parseColor("#000FFF");
-	public final int GREEN = Color.parseColor("#00FF00");
-	public final int START_LEVEL_TIME = 7000;
-	public final int START_LIVES = 3;
+	private final double LEVEL_TIME_DECREASE = .95;
+	private final int RED = Color.parseColor("#FF0000");
+	private final int WHITE = Color.parseColor("#FFFFFF");
+	private final int BLUE = Color.parseColor("#000FFF");
+	private final int GREEN = Color.parseColor("#00FF00");
+	private final int START_LEVEL_TIME = 7000;
+	private final int CORRECT_TIME = 1000;
+	private final int START_LIVES = 3;
+	
+	//Sound Variables
+	//private SoundPool wrong = new SoundPool(1,AudioManager.STREAM_MUSIC,0);
+	//private int sWrong = sounds.load(context, R.assets.boop);
 	
 	Button[][] b = new Button[4][4]; //, [row] [column]
+	Button liveButton;
 	int goal[][] = new int[4][4];
 	Button info;
 	int infoMode = 0; //0 = showing pattern, 1 = user tries to replicate pattern, 2 = game over
@@ -55,7 +62,7 @@ public class FullscreenActivity extends SwarmActivity {
         info = (Button) findViewById(R.id.info);
         info.setOnClickListener(infoPress);
         
-        
+        liveButton = (Button) findViewById(R.id.liveButton);
         b[0][0] = (Button) findViewById(R.id.pattern1x4);
         b[1][0] = (Button) findViewById(R.id.pattern2x4);
         b[2][0] = (Button) findViewById(R.id.pattern3x1);
@@ -81,7 +88,7 @@ public class FullscreenActivity extends SwarmActivity {
         		b[i][j].setOnClickListener(press);
         	}
         }
-	
+        
 		generateLevel();
 	    	
 	    
@@ -147,24 +154,15 @@ public class FullscreenActivity extends SwarmActivity {
 			return false;
 	}
 	
-	public boolean check() {
-		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 4; j++) {
-				if(!checkTile(i, j)) {
-					return false;
-				}
-					
-			}
-		}
-		return true;
-	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void generateLevel() {
 		Typeface bit=Typeface.createFromAsset(getAssets(),"fonts/bus.ttf");
 		reset = false;
 		infoMode = 0;
-		level++;
+		level++;	
+		liveButton.setTypeface(bit);
+        liveButton.setText(Integer.toString(lives));
 		info.setTypeface(bit);
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= LEVEL_TIME_DECREASE;
@@ -251,20 +249,57 @@ public class FullscreenActivity extends SwarmActivity {
 			for(int i = 0; i < 4; i++) {
 				for(int j = 0; j < 4; j++) {
 					b[i][j].setBackgroundColor(WHITE); //set all buttons to white
+					
 				}
 			}
 	        info.setText("Level: "+level+" - Press for Next Level");
 	        reset = true;
 		}
 	}
+	public void show() {
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++) {
+				if (goal[i][j]==1){
+					b[i][j].setBackgroundColor(RED);
+				}
+				else if (goal[i][j]==2){
+					b[i][j].setBackgroundColor(BLUE);
+				}
+				else if (goal[i][j] == 3){
+					b[i][j].setBackgroundColor(GREEN);
+					}
+				else{
+					b[i][j].setBackgroundColor(WHITE);
+					}
+				}
+			}
+		info.setText("That was incorrect! This is the correct answer.");
+		Handler pause = new Handler();
+		Runnable run = new Runnable() {
+			public void run() {
+				generateLevel();
+			}
+		};
+		pause.postDelayed(run, CORRECT_TIME);
+		}
 	public void lives() {
 		if(lives>0) {
-	        Toast.makeText(FullscreenActivity.this, "Ouch! You have "+lives+" lives left!", Toast.LENGTH_SHORT).show();
 			lives--;
 			level--;
-			generateLevel();
+			show();
 		}
 		else
 			gameOver();
+	}
+	public boolean check() {
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++) {
+				if(!checkTile(i, j)) {
+					return false;
+				}
+					
+			}
+		}
+		return true;
 	}
 } 
