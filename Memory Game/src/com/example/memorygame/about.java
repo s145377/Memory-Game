@@ -23,12 +23,12 @@ public class about extends SwarmActivity{
         int p = (int) (Math.random()*100);
         //Randomizes who is `credited first as programmers.
         if(p>50) {
-        	programmer1 = "Jacob Noel";
-        	programmer2 = "Alden Hallak";
-        }
-        else if(p<50) {
         	programmer1 = "Alden Hallak";
         	programmer2 = "Jacob Noel";
+        }
+        else if(p<50) {
+        	programmer1 = "Jacob Noel";
+        	programmer2 = "Alden Hallak";
         }
         else {
         	programmer1 = "a monkey";

@@ -4,21 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
-        android:layout_height="212dp"
+        android:layout_height="150dp"
         android:clickable="true"
         android:onClick="start"
         android:src="@drawable/start" />
 
+    <Button
+        android:id="@+id/liveButton"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF" />
+
     <ImageView
         android:id="@+id/about"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:src="@drawable/about" 
+        android:layout_height="153dp"
         android:clickable="true"
-        android:onClick="about"/>
+        android:onClick="about"
+        android:src="@drawable/about" />
 
 </LinearLayout>

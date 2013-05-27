@@ -1,6 +1,7 @@
 package com.example.memorygame;
 
 import android.annotation.TargetApi;
+//import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,7 +16,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-
 import com.swarmconnect.SwarmActivity;
 import com.swarmconnect.SwarmLeaderboard;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -31,10 +31,10 @@ public class FullscreenActivity extends SwarmActivity {
 	private final int START_LEVEL_TIME = 7000;
 	private final int CORRECT_TIME = 1000;
 	private final int START_LIVES = 3;
-	
+	int wrong;
 	//Sound Variables
-	//private SoundPool wrong = new SoundPool(1,AudioManager.STREAM_MUSIC,0);
-	//private int sWrong = sounds.load(context, R.assets.boop);
+	//SoundPool clicky = new SoundPool(1,AudioManager.STREAM_MUSIC,0);
+	//int sClicky = clicky.load(getApplicationContext(), R.raw.mmm ,1);
 	
 	Button[][] b = new Button[4][4]; //, [row] [column]
 	Button liveButton;
@@ -58,6 +58,9 @@ public class FullscreenActivity extends SwarmActivity {
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(view);
+        SoundManager.getInstance();
+        SoundManager.initSounds(this);
+        SoundManager.loadSounds();
         info = new Button(this);
         info = (Button) findViewById(R.id.info);
         info.setOnClickListener(infoPress);
@@ -139,6 +142,7 @@ public class FullscreenActivity extends SwarmActivity {
 				else
 					((Button) v).setBackgroundColor(WHITE); //change color to white
 			}
+  		  SoundManager.playSound(1, 1);
 			//else if(infoMode==0)
 				//beginGame();
 		}
@@ -188,7 +192,7 @@ public class FullscreenActivity extends SwarmActivity {
 						b[i][j].setBackgroundColor(WHITE);
 					}
 					else {
-						goal[i][j] = 0;
+						goal[i][j] = 3;
 						b[i][j].setBackgroundColor(GREEN);
 					}
 						
