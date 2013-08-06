@@ -2,6 +2,6 @@ Memory-Game
 ===========
 
 Memory Game
-TODO: Get Working on Computer.
-TODO: Fix R.Java
-TODO: Change The theme, see if it changes formatting glitch.
+The issue we have with android 4.2.2: http://stackoverflow.com/questions/15599616/android-layout-drawing-glitch/18070884
+
+

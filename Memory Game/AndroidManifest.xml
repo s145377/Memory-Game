@@ -12,10 +12,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.memorygame.FullscreenActivity" android:theme="@style/FullscreenTheme"/>
-        <activity android:name="com.example.memorygame.about" android:theme="@style/FullscreenTheme"/>
-        <activity android:configChanges="orientation|keyboardHidden" android:label="Swarm" android:name="com.swarmconnect.SwarmMainActivity" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="stateHidden"/>
-        
-        <service android:name="com.swarmconnect.NotificationService" android:process=":swarm"/>
+        <activity android:name="com.example.memorygame.about" android:theme="@style/FullscreenTheme"/>        
         <activity android:name="com.example.memorygame.FullScreenActivityWithNumbers" android:theme="@style/FullscreenTheme"></activity>
         <activity android:name="com.example.memorygame.onlynumbers" android:theme="@style/FullscreenTheme"></activity>
         <activity android:name="com.google.ads.AdActivity"

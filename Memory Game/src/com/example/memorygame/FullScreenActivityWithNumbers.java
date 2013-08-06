@@ -129,8 +129,8 @@ public class FullScreenActivityWithNumbers extends SwarmActivity {
 			if(infoMode==1) {
 				if(((ColorDrawable)((Button) v).getBackground()).getColor()==WHITE) //check if color is white
 					setTile(RED, ((Button) v)); //change color to red
-				else if(((ColorDrawable)((Button) v).getBackground()).getColor()==RED)
-					setTile(BLUE, ((Button) v)); //change color to blue
+				//else if(((ColorDrawable)((Button) v).getBackground()).getColor()==RED)
+					//setTile(BLUE, ((Button) v)); //change color to blue
 				else
 					setTile(WHITE, ((Button) v)); //change color to white
 			}
