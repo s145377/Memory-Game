@@ -170,7 +170,6 @@ public class FullScreenActivityWithNumbers extends SwarmActivity {
 		info.setTypeface(bit);
 		info.setText("Level: "+level+" - Memorize the pattern!");
 		levelTime *= LEVEL_TIME_DECREASE;
-
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
 				double rand = Math.random(); //used to generate next level
